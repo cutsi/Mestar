@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" xmlns:th="https://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head th:replace="fragments/general :: head"></head>
+
+<body class="d-flex flex-column h-100">
+<main role="main" class="flex-shrink-0">
+
+    <header th:replace="fragments/general :: header"></header>
+
+    <section id="main-content">
+        <div class="jumbotron jumbotron-fluid jumbotron-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="jumbotron-subheader">Apply for a handyman</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <form th:action="@{/about-us}" method="post">
+        <section id="featured-handymen">
+            <label>SELECT CITY:
+                <select name="city" id="${city}" multiple>
+                    <option value="SELECT CATEGORY" disabled>SELECT A CITY</option>
+                    <option th:each="city : ${cityList}"
+                            th:value ="${city}" th:text="${city}"></option>
+                </select>
+            </label>
+            <label>SELECT CATEGORY:
+                <select name="category" id="${category}" multiple>
+                    <option value="SELECT CATEGORY" disabled>SELECT CATEGORY</option>
+                    <option th:each="category : ${categoryList}"
+                            th:value ="${category}" th:text="${category}"></option>
+                </select>
+            </label>
+            <input type="submit" value="Submit" />
+        </section>
+    </form>
+</main>
+<footer th:fragment="footer" id="footer" class="footer mt-auto py-3">
+    <div class="container">
+        <p>&#169; 2021 Cutura productions</p>
+    </div>
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+</script>
+</body>
+
+</html>

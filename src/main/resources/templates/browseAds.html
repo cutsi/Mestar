@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en" class="h-100" xmlns:th="https://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head th:replace="fragments/general :: head"></head>
+<head>
+    <link href="../static/css/datatable.css" th:href="@{/css/datatable.css}" rel="stylesheet" />
+
+    <header th:replace="fragments/general_welcome :: header"></header>
+
+</head>
+<body class="d-flex flex-column h-100">
+
+<header th:replace="fragments/general :: header">
+
+</header>
+<table id="example" class="display" style="width:100%; margin-top:130px;">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>City</th>
+        <th>Price</th>
+        <th>Created at</th>
+        <th>Link to the ad</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="ad: ${ads}">
+        <tr>
+            <td>[[${ad.getUser().getFirstName()}]]</td>
+            <td>[[${ad.getCategory().getCategoryName()}]]</td>
+            <td>[[${ad.getCity().getCityName()}]]</td>
+            <td>$[[${ad.getPrice()}]]</td>
+            <td>[[${ad.getCreatedAt().getMonth().toString()}]] [[${ad.getCreatedAt().getDayOfMonth()}]] [[${ad.getCreatedAt().getYear()}]]</td>
+            <td><a th:href="@{showAd?id=}+${ad.getId()}"/>Check it out!</td>
+
+        </tr>
+    </th:block>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>City</th>
+        <th>Price</th>
+        <th>Created at</th>
+        <th>Link to the ad</th>
+    </tr>
+    </tfoot>
+</table>
+<footer th:fragment="footer" id="footer" class="footer mt-auto py-3">
+    <div class="container">
+        <p>&#169; 2021 Cutura productions</p>
+    </div>
+</footer>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+<script>
+    $("#example").DataTable()
+</script>
+</html>

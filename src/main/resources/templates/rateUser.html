@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" xmlns:th="https://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head th:replace="fragments/general :: head"></head>
+<head>
+  <link href="../static/css/construct-ad.css" th:href="@{/css/construct-ad.css}" rel="stylesheet" />
+  <link href="../static/css/stars.css" th:href="@{/css/stars.css}" rel="stylesheet" />
+  <link href="../static/css/button.css" th:href="@{/css/button.css}" rel="stylesheet" />
+
+
+  <header th:replace="fragments/general_welcome :: header"></header>
+
+</head>
+<body class="d-flex flex-column h-100">
+
+<header th:replace="fragments/general :: header"></header>
+
+<section>
+  <div class="form_wrapper">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>RATE USER</h2>
+      </div>
+      <form action="rate">
+      <div class="rate">
+        <input type="radio" id="star5" name="rate" value="5" />
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4" name="rate" value="4" />
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3" name="rate" value="3" />
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2" name="rate" value="2" />
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1" name="rate" value="1" />
+        <label for="star1" title="text">1 star</label>
+      </div>
+        <input type="hidden" name="contractorId" th:value="${contractor.getId()}">
+        <input type="hidden" name="adId" th:value="${ad.getId()}">
+
+        <a><button class="myButton">Rate</button>  <i class="mdi mdi-chevron-right"></i></a>
+
+      </form>
+    </div>
+  </div>
+</section>
+<footer th:fragment="footer" id="footer" class="footer mt-auto py-3">
+  <div class="container">
+    <p>&#169; 2021 Cutura productions</p>
+  </div>
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+</script>
+</body>
+
+</html>

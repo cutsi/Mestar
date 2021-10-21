@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" xmlns:th="https://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head th:replace="fragments/general :: head"></head>
+<head>
+  <link href="../static/css/editprofile.css" th:href="@{/css/editprofile.css}" rel="stylesheet" />
+  <header th:replace="fragments/general_welcome :: header"></header>
+
+</head>
+<body class="d-flex flex-column h-100">
+
+<header th:replace="fragments/general :: header"></header>
+
+<section>
+  <form th:action="@{/edit-me}" method="post">
+  <div class="container">
+    <div class="main-body">
+      <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-column align-items-center text-center">
+                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                <div class="mt-3">
+                  <h4>[[${user.getFirstName()}]]</h4>
+                  <p class="text-secondary mb-1">
+                    <a th:each="cat : ${categories}"
+                       th:value ="${cat.getCategoryName()}" th:text="${cat.getCategoryName()} + ', ' "></a>
+                  </p>
+                  <p class="text-muted font-size-sm">[[${user.getAddress()}]]</p>
+                  <button class="btn btn-outline-primary">Message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">First Name</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input th:type="text" th:class="form-control" th:name="Name" th:value="${user.getFirstName()}">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Last Name</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input th:type="text" th:class="form-control" th:name="lastname" th:value="${user.getLastName()}">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Email</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input th:type="text" th:class="form-control" th:name="email" th:value="${user.getEmail()}">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Phone</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input th:type="text" th:class="form-control" th:name="phone" th:value="${user.getPhone()}">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Address</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input th:type="text" th:class="form-control" th:name="address" th:value="${user.getAddress()}">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-12">
+                  <input type="submit" class="btn btn-info " value="Save" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+</section>
+<footer th:fragment="footer" id="footer" class="footer mt-auto py-3">
+  <div class="container">
+    <p>&#169; 2021 Cutura productions</p>
+  </div>
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+</script>
+</body>
+
+</html>
